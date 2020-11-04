@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Históricos de IMC's
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h4 *ngIf="historics.length == 0">Nenhum IMC calculado!</h4>
+
+  <ion-list>
+
+    <ion-card *ngFor="let h of historics">
+      <ion-card-header>
+        <ion-card-title>{{ h.imc }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>Altura (cm): {{ h.altura }}</p>
+        <p>Peso (kg): {{ h.peso }}</p>
+        <p>Classificação: {{ h.classificacao }}</p>
+        <p>Grau de obesidade: {{ h.grauObesidade }}</p>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+
+  <ion-fab (click)="calcularImc()" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
